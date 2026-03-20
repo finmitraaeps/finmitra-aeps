@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigiBank Seva</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f4f6fb;
+  margin: 0;
+}
+
+.container {
+  padding: 15px;
+}
+
+/* CARD DESIGN */
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.btn {
+  background: #2d5cff;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* FORM */
+.form-box {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2 style="text-align:center;">Become a Partner</h2>
+
+<!-- RETAILER -->
+<div class="card">
+  <h3>Retailer</h3>
+  <div class="price">₹499</div>
+  <p>Recharge • Money Transfer • Bill Payment</p>
+  <button class="btn" onclick="showForm('retailer')">Select Plan</button>
+</div>
+
+<!-- DISTRIBUTOR -->
+<div class="card">
+  <h3>Distributor</h3>
+  <div class="price">₹999</div>
+  <p>Unlimited Retailers • High Commission • Lifetime</p>
+  <button class="btn" onclick="showForm('distributor')">Select Plan</button>
+</div>
+
+<!-- FORM -->
+<div class="form-box" id="formBox">
+  <h3 id="formTitle"></h3>
+
+  <input type="text" placeholder="Full Name">
+  <input type="text" placeholder="Father's / Husband Name">
+  <input type="date">
+  <input type="text" placeholder="Shop Name">
+  <input type="email" placeholder="Email">
+  <input type="number" placeholder="Mobile Number">
+  <input type="text" placeholder="PAN Number">
+  <input type="text" placeholder="Aadhar Number">
+
+  <select>
+    <option>Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+  </select>
+
+  <input type="text" placeholder="Full Address">
+
+  <select>
+    <option>Choose State</option>
+    <option>Bihar</option>
+    <option>UP</option>
+    <option>Delhi</option>
+  </select>
+
+  <input type="text" placeholder="City">
+  <input type="number" placeholder="Pincode">
+
+  <h4 id="feeText"></h4>
+  <p>UPI: yourname@upi</p>
+
+  <button class="btn" onclick="submitForm()">Create My Account</button>
+</div>
+
+</div>
+
+<script>
+function showForm(type) {
+  document.getElementById("formBox").style.display = "block";
+
+  if(type === "retailer") {
+    document.getElementById("formTitle").innerText = "Retailer Registration";
+    document.getElementById("feeText").innerText = "Pay ₹499";
+  } else {
+    document.getElementById("formTitle").innerText = "Distributor Registration";
+    document.getElementById("feeText").innerText = "Pay ₹999";
+  }
+}
+
+function submitForm() {
+  alert("Registration Submitted ✅");
+}
+</script>
+
+</body>
+</html>
