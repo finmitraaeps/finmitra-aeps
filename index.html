@@ -25,6 +25,7 @@ body {
   color: gray;
 }
 
+/* CARD */
 .card {
   background: white;
   border-radius: 18px;
@@ -87,6 +88,7 @@ body {
   margin-top: 15px;
 }
 
+/* FORM */
 .form-box {
   display: none;
   background: white;
@@ -127,9 +129,7 @@ input, select {
   <div class="list">
     <div>✔ AEPS</div>
     <div>✔ Aadhar Pay</div>
-
     <div>✔ Saving & Current</div>
-
     <div>✔ Recharges</div>
     <div>✔ Money Transfer</div>
     <div>✔ Micro ATM</div>
@@ -182,16 +182,37 @@ input, select {
   <input placeholder="City">
   <input placeholder="Pincode">
 
-  <p>💳 Pay via UPI: Q99636372@ybl</p>
+  <button class="btn" onclick="showPayment()">Create My Account</button>
+</div>
 
-  <button class="btn">Create My Account</button>
+<!-- PAYMENT -->
+<div class="form-box" id="paymentBox">
+  <h3>Complete Payment</h3>
+
+  <p style="text-align:center;font-size:18px;">
+    💳 Pay Amount: <b id="payAmount"></b>
+  </p>
+
+  <p style="text-align:center;">
+    UPI ID: <b>Q99636372@ybl</b>
+  </p>
+
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
+       style="display:block;margin:auto;">
+
+  <p style="text-align:center;color:gray;">
+    Payment करने के बाद refresh करें
+  </p>
 </div>
 
 </div>
 
 <script>
+let currentPlan = "";
+
 function openForm(plan){
   document.getElementById("formBox").style.display = "block";
+  currentPlan = plan;
 
   if(plan === "retailer"){
     document.getElementById("planTitle").innerText = "Retailer Registration ₹399";
@@ -199,10 +220,19 @@ function openForm(plan){
     document.getElementById("planTitle").innerText = "Distributor Registration ₹999";
   }
 
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: 'smooth'
-  });
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+}
+
+function showPayment(){
+  document.getElementById("paymentBox").style.display = "block";
+
+  if(currentPlan === "retailer"){
+    document.getElementById("payAmount").innerText = "₹399";
+  } else {
+    document.getElementById("payAmount").innerText = "₹999";
+  }
+
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 </script>
 
