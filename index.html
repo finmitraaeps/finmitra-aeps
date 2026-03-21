@@ -12,9 +12,7 @@ body {
   background: #f5f7fb;
 }
 
-.container { padding: 15px; }
-
-.header { text-align:center; }
+.container { padding:15px; }
 
 .card {
   background:white;
@@ -22,9 +20,37 @@ body {
   padding:20px;
   margin:15px 0;
   border:2px solid #2d5cff;
+  position:relative;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-.price { text-align:center; font-size:28px; font-weight:bold; }
+.ribbon {
+  position:absolute;
+  top:10px;
+  right:-30px;
+  background:#2d5cff;
+  color:white;
+  padding:5px 40px;
+  transform:rotate(45deg);
+  font-size:12px;
+}
+
+.icon-img {
+  display:block;
+  margin:auto;
+  width:60px;
+}
+
+.icon {
+  text-align:center;
+  font-size:32px;
+}
+
+.price {
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+}
 
 .list {
   display:grid;
@@ -41,6 +67,7 @@ body {
   border-radius:10px;
 }
 
+/* FORM */
 .form-box {
   display:none;
   background:white;
@@ -49,7 +76,7 @@ body {
   border-radius:10px;
 }
 
-input {
+input,select {
   width:100%;
   padding:10px;
   margin:5px 0;
@@ -65,7 +92,11 @@ input {
 
 <!-- RETAILER -->
 <div class="card">
-  <h3>Retailer</h3>
+  <div class="ribbon">Most Popular</div>
+
+  <img src="shop.png" class="icon-img">
+
+  <h3 style="text-align:center;">Retailer</h3>
   <div class="price">₹499</div>
 
   <div class="list">
@@ -84,7 +115,9 @@ input {
 
 <!-- DISTRIBUTOR -->
 <div class="card">
-  <h3>Distributor</h3>
+  <div class="icon">👥👥</div>
+
+  <h3 style="text-align:center;">Distributor</h3>
   <div class="price">₹999</div>
 
   <div class="list">
@@ -102,8 +135,23 @@ input {
   <h3 id="planTitle"></h3>
 
   <input id="name" placeholder="Full Name">
-  <input id="mobile" placeholder="Mobile Number">
+  <input placeholder="Father / Husband Name">
+  <input type="date">
+  <input placeholder="Shop Name">
   <input id="email" placeholder="Email">
+  <input id="mobile" placeholder="Mobile Number">
+  <input placeholder="PAN Number">
+  <input placeholder="Aadhaar Number">
+
+  <select>
+    <option>Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+  </select>
+
+  <input placeholder="Full Address">
+  <input placeholder="City">
+  <input placeholder="Pincode">
 
   <button class="btn" onclick="validateForm()">Create My Account</button>
 </div>
@@ -111,10 +159,21 @@ input {
 <!-- PAYMENT -->
 <div class="form-box" id="paymentBox">
   <h3>Complete Payment</h3>
-  <p>Amount: <b id="amount"></b></p>
-  <p>UPI: Q99636372@ybl</p>
 
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl">
+  <p style="text-align:center;font-size:18px;">
+    Amount: <b id="amount"></b>
+  </p>
+
+  <p style="text-align:center;">
+    UPI: <b>Q99636372@ybl</b>
+  </p>
+
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
+       style="display:block;margin:auto;">
+
+  <p style="text-align:center;color:gray;">
+    Payment करने के बाद screenshot save रखें
+  </p>
 </div>
 
 </div>
@@ -124,34 +183,3 @@ let plan="";
 
 function openForm(p){
   plan=p;
-  document.getElementById("formBox").style.display="block";
-
-  if(p==="retailer"){
-    document.getElementById("planTitle").innerText="Retailer ₹499";
-  } else {
-    document.getElementById("planTitle").innerText="Distributor ₹999";
-  }
-}
-
-function validateForm(){
-  let name=document.getElementById("name").value;
-  let mobile=document.getElementById("mobile").value;
-  let email=document.getElementById("email").value;
-
-  if(name===""||mobile===""||email===""){
-    alert("⚠️ Please fill all details first");
-    return;
-  }
-
-  document.getElementById("paymentBox").style.display="block";
-
-  if(plan==="retailer"){
-    document.getElementById("amount").innerText="₹499";
-  } else {
-    document.getElementById("amount").innerText="₹999";
-  }
-}
-</script>
-
-</body>
-</html>
