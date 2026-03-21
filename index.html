@@ -10,71 +10,16 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: #f5f7fb;
-  margin: 0;
 }
 
-.container {
-  padding: 15px;
-}
+.container { padding: 15px; }
 
-.header {
-  text-align: center;
-}
-
-.header p {
-  color: gray;
-}
-
-/* CARD */
 .card {
   background: white;
   border-radius: 18px;
   padding: 20px;
   margin: 15px 0;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   border: 2px solid #2d5cff;
-  position: relative;
-}
-
-.ribbon {
-  position: absolute;
-  top: 10px;
-  right: -30px;
-  background: linear-gradient(45deg,#2d5cff,#5a7cff);
-  color: white;
-  padding: 5px 40px;
-  transform: rotate(45deg);
-  font-size: 12px;
-}
-
-.icon {
-  width: 60px;
-  display: block;
-  margin: auto;
-}
-
-.title {
-  text-align: center;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.price {
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.subtitle {
-  text-align: center;
-  color: gray;
-}
-
-.list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-top: 10px;
 }
 
 .btn {
@@ -84,11 +29,8 @@ body {
   border-radius: 12px;
   border: none;
   width: 100%;
-  font-size: 16px;
-  margin-top: 15px;
 }
 
-/* FORM */
 .form-box {
   display: none;
   background: white;
@@ -97,12 +39,10 @@ body {
   border-radius: 15px;
 }
 
-input, select {
+input {
   width: 100%;
   padding: 10px;
   margin: 6px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
 }
 </style>
 </head>
@@ -111,51 +51,19 @@ input, select {
 
 <div class="container">
 
-<div class="header">
-  <h1>DigiBank Seva</h1>
-  <p>Choose your plan below to start your digital financial journey</p>
-</div>
+<h2 style="text-align:center;">DigiBank Seva</h2>
 
 <!-- RETAILER -->
 <div class="card">
-  <div class="ribbon">Most Popular</div>
-
-  <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
-
-  <div class="title">Retailer</div>
-  <div class="price">₹399</div>
-  <div class="subtitle">One-Time Onboarding Fee</div>
-
-  <div class="list">
-    <div>✔ AEPS</div>
-    <div>✔ Aadhar Pay</div>
-    <div>✔ Saving & Current</div>
-    <div>✔ Recharges</div>
-    <div>✔ Money Transfer</div>
-    <div>✔ Micro ATM</div>
-    <div>✔ PAN Service</div>
-    <div>✔ And many more...</div>
-  </div>
-
+  <h3>Retailer</h3>
+  <h2>₹499</h2>
   <button class="btn" onclick="openForm('retailer')">Select Plan</button>
 </div>
 
 <!-- DISTRIBUTOR -->
-<div class="card" style="border:none;">
-  <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png">
-
-  <div class="title">Distributor</div>
-  <div class="price">₹999</div>
-  <div class="subtitle">One-Time Onboarding Fee</div>
-
-  <div class="list">
-    <div>✔ Unlimited Retailers</div>
-    <div>✔ Highest Commission</div>
-    <div>✔ 24x7 Support</div>
-    <div>✔ Lifetime Validity</div>
-    <div>✔ Dedicated Portal</div>
-  </div>
-
+<div class="card">
+  <h3>Distributor</h3>
+  <h2>₹999</h2>
   <button class="btn" onclick="openForm('distributor')">Select Plan</button>
 </div>
 
@@ -163,76 +71,55 @@ input, select {
 <div class="form-box" id="formBox">
   <h3 id="planTitle"></h3>
 
-  <input placeholder="Full Name">
-  <input placeholder="Father Name">
-  <input type="date">
-  <input placeholder="Shop Name">
-  <input placeholder="Email">
-  <input placeholder="Mobile">
-  <input placeholder="PAN">
-  <input placeholder="Aadhar">
+  <input id="name" placeholder="Full Name">
+  <input id="mobile" placeholder="Mobile Number">
+  <input id="email" placeholder="Email">
 
-  <select>
-    <option>Select Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-  </select>
-
-  <input placeholder="Address">
-  <input placeholder="City">
-  <input placeholder="Pincode">
-
-  <button class="btn" onclick="showPayment()">Create My Account</button>
+  <button class="btn" onclick="validateForm()">Create My Account</button>
 </div>
 
 <!-- PAYMENT -->
 <div class="form-box" id="paymentBox">
   <h3>Complete Payment</h3>
+  <p>Amount: <b id="amount"></b></p>
+  <p>UPI: Q99636372@ybl</p>
 
-  <p style="text-align:center;font-size:18px;">
-    💳 Pay Amount: <b id="payAmount"></b>
-  </p>
-
-  <p style="text-align:center;">
-    UPI ID: <b>Q99636372@ybl</b>
-  </p>
-
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
-       style="display:block;margin:auto;">
-
-  <p style="text-align:center;color:gray;">
-    Payment करने के बाद refresh करें
-  </p>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl">
 </div>
 
 </div>
 
 <script>
-let currentPlan = "";
+let plan = "";
 
-function openForm(plan){
+function openForm(p){
+  plan = p;
   document.getElementById("formBox").style.display = "block";
-  currentPlan = plan;
 
-  if(plan === "retailer"){
-    document.getElementById("planTitle").innerText = "Retailer Registration ₹399";
+  if(p === "retailer"){
+    document.getElementById("planTitle").innerText = "Retailer ₹499";
   } else {
-    document.getElementById("planTitle").innerText = "Distributor Registration ₹999";
+    document.getElementById("planTitle").innerText = "Distributor ₹999";
   }
-
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
-function showPayment(){
-  document.getElementById("paymentBox").style.display = "block";
+function validateForm(){
+  let name = document.getElementById("name").value;
+  let mobile = document.getElementById("mobile").value;
+  let email = document.getElementById("email").value;
 
-  if(currentPlan === "retailer"){
-    document.getElementById("payAmount").innerText = "₹399";
-  } else {
-    document.getElementById("payAmount").innerText = "₹999";
+  if(name === "" || mobile === "" || email === ""){
+    alert("⚠️ Please fill all details first");
+    return;
   }
 
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  document.getElementById("paymentBox").style.display = "block";
+
+  if(plan === "retailer"){
+    document.getElementById("amount").innerText = "₹499";
+  } else {
+    document.getElementById("amount").innerText = "₹999";
+  }
 }
 </script>
 
