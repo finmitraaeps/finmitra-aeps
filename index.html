@@ -10,100 +10,19 @@
 body{
   font-family:'Poppins',sans-serif;
   background:#f4f7fc;
-  margin:0;
 }
 
-.container{
-  padding:20px;
-}
+.container{padding:20px;}
 
-h1{
-  text-align:center;
-  font-size:26px;
-}
-
-.sub{
-  text-align:center;
-  color:#666;
-  font-size:14px;
-  margin-bottom:20px;
-}
-
-/* CARD */
 .card{
   background:white;
   border-radius:20px;
   padding:20px;
   margin:15px 0;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  position:relative;
 }
 
-/* RIBBON */
-.ribbon{
-  position:absolute;
-  top:15px;
-  right:-40px;
-  background:#2d5cff;
-  color:white;
-  padding:6px 50px;
-  transform:rotate(45deg);
-  font-size:12px;
-  pointer-events:none;
-}
-
-/* ICON */
-.icon-box{
-  width:80px;
-  height:80px;
-  background:#eef2ff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:auto;
-}
-
-.icon-box img{
-  width:40px;
-}
-
-/* TEXT */
-.title{
-  text-align:center;
-  font-size:22px;
-  font-weight:600;
-}
-
-.price{
-  text-align:center;
-  font-size:32px;
-  font-weight:700;
-}
-
-.subprice{
-  text-align:center;
-  color:#777;
-  font-size:13px;
-  margin-bottom:15px;
-}
-
-/* LIST */
-.list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  font-size:14px;
-}
-
-.list div::before{
-  content:"✔ ";
-  color:#2d5cff;
-}
-
-/* BUTTON */
 .btn{
-  margin-top:20px;
   width:100%;
   padding:14px;
   border:none;
@@ -113,7 +32,6 @@ h1{
   font-size:16px;
 }
 
-/* FORM */
 .form-box{
   display:none;
   background:white;
@@ -136,87 +54,67 @@ input,select{
 
 <div class="container">
 
-<h1>Become a Partner</h1>
-<div class="sub">Choose your plan below to start your digital financial journey with us.</div>
+<h2 style="text-align:center;">DigiBank Seva</h2>
 
 <!-- RETAILER -->
 <div class="card">
-  <div class="ribbon">Most Popular</div>
-
-  <div class="icon-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
-  </div>
-
-  <div class="title">Retailer</div>
-  <div class="price">₹499</div>
-  <div class="subprice">One-Time Onboarding Fee</div>
-
-  <div class="list">
-    <div>AEPS</div>
-    <div>Aadhar Pay</div>
-    <div>Saving & Current</div>
-    <div>Recharges</div>
-    <div>Money Transfer</div>
-    <div>Micro ATM</div>
-    <div>PAN Service</div>
-    <div>And many more...</div>
-  </div>
-
-  <button class="btn" onclick="openForm('retailer')">Select Plan</button>
+<h3>Retailer ₹499</h3>
+<button class="btn" onclick="openForm('retailer')">Select Plan</button>
 </div>
 
 <!-- DISTRIBUTOR -->
 <div class="card">
-
-  <div class="icon-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/921/921347.png">
-  </div>
-
-  <div class="title">Distributor</div>
-  <div class="price">₹999</div>
-  <div class="subprice">One-Time Onboarding Fee</div>
-
-  <div class="list">
-    <div>Unlimited Retailers</div>
-    <div>Highest Commission</div>
-    <div>24x7 Support</div>
-    <div>Lifetime Validity</div>
-    <div>Dedicated Portal</div>
-  </div>
-
-  <button class="btn" onclick="openForm('distributor')">Select Plan</button>
+<h3>Distributor ₹999</h3>
+<button class="btn" onclick="openForm('distributor')">Select Plan</button>
 </div>
 
 <!-- FORM -->
 <div class="form-box" id="formBox">
-  <h3 id="planTitle"></h3>
 
-  <input id="name" placeholder="Full Name">
-  <input id="mobile" placeholder="Mobile Number">
-  <input id="email" placeholder="Email">
+<h3 id="planTitle"></h3>
 
-  <button class="btn" onclick="validateForm()">Create My Account</button>
+<input id="name" placeholder="Full Name *">
+<input id="father" placeholder="Father / Husband Name *">
+<input id="dob" type="date">
+<input id="shop" placeholder="Shop Name *">
+<input id="email" placeholder="Email *">
+<input id="mobile" placeholder="Mobile *">
+<input id="pan" placeholder="PAN Number *">
+<input id="aadhaar" placeholder="Aadhaar Number *">
+
+<select id="gender">
+<option value="">Select Gender *</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<input id="address" placeholder="Full Address *">
+<input id="state" placeholder="State *">
+<input id="city" placeholder="City *">
+<input id="pincode" placeholder="Pincode *">
+
+<button class="btn" onclick="validateForm()">Create My Account</button>
+
 </div>
 
 <!-- PAYMENT -->
 <div class="form-box" id="paymentBox">
-  <h3>Complete Payment</h3>
 
-  <p style="text-align:center;font-size:18px;">
-    Amount: <b id="amount"></b>
-  </p>
+<h3>Complete Payment</h3>
 
-  <p style="text-align:center;">
-    UPI: <b>Q99636372@ybl</b>
-  </p>
+<p style="text-align:center;">Amount: <b id="amount"></b></p>
 
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
-       style="display:block;margin:auto;">
+<p style="text-align:center;">UPI: <b>Q99636372@ybl</b></p>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
+style="display:block;margin:auto;">
+
 </div>
 
 </div>
 
 <script>
+
 let plan="";
 
 function openForm(p){
@@ -224,34 +122,41 @@ function openForm(p){
   document.getElementById("formBox").style.display="block";
 
   if(p==="retailer"){
-    document.getElementById("planTitle").innerText="Retailer ₹499";
+    document.getElementById("planTitle").innerText="Retailer Registration ₹499";
   } else {
-    document.getElementById("planTitle").innerText="Distributor ₹999";
+    document.getElementById("planTitle").innerText="Distributor Registration ₹999";
   }
 
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
 
 function validateForm(){
-  let name=document.getElementById("name").value;
-  let mobile=document.getElementById("mobile").value;
-  let email=document.getElementById("email").value;
 
-  if(name===""||mobile===""||email===""){
+let fields=["name","father","shop","email","mobile","pan","aadhaar","address","state","city","pincode"];
+
+for(let i=0;i<fields.length;i++){
+  if(document.getElementById(fields[i]).value===""){
     alert("⚠️ Please fill all details");
     return;
   }
-
-  document.getElementById("paymentBox").style.display="block";
-
-  if(plan==="retailer"){
-    document.getElementById("amount").innerText="₹499";
-  } else {
-    document.getElementById("amount").innerText="₹999";
-  }
-
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
+
+if(document.getElementById("gender").value===""){
+  alert("⚠️ Select Gender");
+  return;
+}
+
+document.getElementById("paymentBox").style.display="block";
+
+if(plan==="retailer"){
+  document.getElementById("amount").innerText="₹499";
+}else{
+  document.getElementById("amount").innerText="₹999";
+}
+
+window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
 </script>
 
 </body>
