@@ -7,82 +7,127 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f5f7fb;
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f4f7fc;
+  margin:0;
 }
 
-.container { padding:15px; }
+.container{
+  padding:20px;
+}
 
-.card {
+h1{
+  text-align:center;
+  font-size:26px;
+}
+
+.sub{
+  text-align:center;
+  color:#666;
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+/* CARD */
+.card{
   background:white;
-  border-radius:18px;
+  border-radius:20px;
   padding:20px;
   margin:15px 0;
-  border:2px solid #2d5cff;
-  position:relative;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  position:relative;
 }
 
-.ribbon {
+/* RIBBON */
+.ribbon{
   position:absolute;
-  top:10px;
-  right:-30px;
+  top:15px;
+  right:-40px;
   background:#2d5cff;
   color:white;
-  padding:5px 40px;
+  padding:6px 50px;
   transform:rotate(45deg);
   font-size:12px;
-  pointer-events:none; /* FIX */
+  pointer-events:none;
 }
 
-.icon-img {
-  display:block;
+/* ICON */
+.icon-box{
+  width:80px;
+  height:80px;
+  background:#eef2ff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   margin:auto;
-  width:60px;
 }
 
-.icon {
+.icon-box img{
+  width:40px;
+}
+
+/* TEXT */
+.title{
+  text-align:center;
+  font-size:22px;
+  font-weight:600;
+}
+
+.price{
   text-align:center;
   font-size:32px;
+  font-weight:700;
 }
 
-.price {
+.subprice{
   text-align:center;
-  font-size:28px;
-  font-weight:bold;
+  color:#777;
+  font-size:13px;
+  margin-bottom:15px;
 }
 
-.list {
+/* LIST */
+.list{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:8px;
+  gap:10px;
+  font-size:14px;
 }
 
-.btn {
-  background:linear-gradient(to right,#2d5cff,#5a7cff);
-  color:white;
-  padding:12px;
-  border:none;
+.list div::before{
+  content:"✔ ";
+  color:#2d5cff;
+}
+
+/* BUTTON */
+.btn{
+  margin-top:20px;
   width:100%;
+  padding:14px;
+  border:none;
   border-radius:10px;
-  position:relative;
-  z-index:2;
+  background:#2d5cff;
+  color:white;
+  font-size:16px;
 }
 
 /* FORM */
-.form-box {
+.form-box{
   display:none;
   background:white;
   padding:20px;
-  margin:10px 0;
-  border-radius:10px;
+  border-radius:15px;
+  margin-top:15px;
 }
 
-input,select {
+input,select{
   width:100%;
   padding:10px;
-  margin:5px 0;
+  margin:6px 0;
+  border-radius:8px;
+  border:1px solid #ddd;
 }
 </style>
 </head>
@@ -91,26 +136,30 @@ input,select {
 
 <div class="container">
 
-<h2 style="text-align:center;">DigiBank Seva</h2>
+<h1>Become a Partner</h1>
+<div class="sub">Choose your plan below to start your digital financial journey with us.</div>
 
 <!-- RETAILER -->
 <div class="card">
   <div class="ribbon">Most Popular</div>
 
-  <img src="shop.png" class="icon-img">
+  <div class="icon-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
+  </div>
 
-  <h3 style="text-align:center;">Retailer</h3>
+  <div class="title">Retailer</div>
   <div class="price">₹499</div>
+  <div class="subprice">One-Time Onboarding Fee</div>
 
   <div class="list">
-    <div>✔ AEPS</div>
-    <div>✔ Aadhar Pay</div>
-    <div>✔ Saving & Current</div>
-    <div>✔ Recharges</div>
-    <div>✔ Money Transfer</div>
-    <div>✔ Micro ATM</div>
-    <div>✔ PAN Service</div>
-    <div>✔ And more...</div>
+    <div>AEPS</div>
+    <div>Aadhar Pay</div>
+    <div>Saving & Current</div>
+    <div>Recharges</div>
+    <div>Money Transfer</div>
+    <div>Micro ATM</div>
+    <div>PAN Service</div>
+    <div>And many more...</div>
   </div>
 
   <button class="btn" onclick="openForm('retailer')">Select Plan</button>
@@ -118,16 +167,21 @@ input,select {
 
 <!-- DISTRIBUTOR -->
 <div class="card">
-  <div class="icon">👥👥</div>
 
-  <h3 style="text-align:center;">Distributor</h3>
+  <div class="icon-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/921/921347.png">
+  </div>
+
+  <div class="title">Distributor</div>
   <div class="price">₹999</div>
+  <div class="subprice">One-Time Onboarding Fee</div>
 
   <div class="list">
-    <div>✔ Unlimited Retailers</div>
-    <div>✔ High Commission</div>
-    <div>✔ 24x7 Support</div>
-    <div>✔ Lifetime Validity</div>
+    <div>Unlimited Retailers</div>
+    <div>Highest Commission</div>
+    <div>24x7 Support</div>
+    <div>Lifetime Validity</div>
+    <div>Dedicated Portal</div>
   </div>
 
   <button class="btn" onclick="openForm('distributor')">Select Plan</button>
@@ -138,23 +192,8 @@ input,select {
   <h3 id="planTitle"></h3>
 
   <input id="name" placeholder="Full Name">
-  <input placeholder="Father / Husband Name">
-  <input type="date">
-  <input placeholder="Shop Name">
-  <input id="email" placeholder="Email">
   <input id="mobile" placeholder="Mobile Number">
-  <input placeholder="PAN Number">
-  <input placeholder="Aadhaar Number">
-
-  <select>
-    <option>Select Gender</option>
-    <option>Male</option>
-    <option>Female</option>
-  </select>
-
-  <input placeholder="Full Address">
-  <input placeholder="City">
-  <input placeholder="Pincode">
+  <input id="email" placeholder="Email">
 
   <button class="btn" onclick="validateForm()">Create My Account</button>
 </div>
@@ -173,10 +212,6 @@ input,select {
 
   <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
        style="display:block;margin:auto;">
-
-  <p style="text-align:center;color:gray;">
-    Payment करने के बाद screenshot save रखें
-  </p>
 </div>
 
 </div>
@@ -203,7 +238,7 @@ function validateForm(){
   let email=document.getElementById("email").value;
 
   if(name===""||mobile===""||email===""){
-    alert("⚠️ Please fill all required details");
+    alert("⚠️ Please fill all details");
     return;
   }
 
