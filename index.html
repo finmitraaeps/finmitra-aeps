@@ -12,11 +12,32 @@ body{
   background:#f4f7fc;
   margin:0;
 }
-.container{padding:20px;}
-.logo{display:block;margin:auto;width:140px;}
-.brand{text-align:center;font-size:28px;font-weight:700;background: linear-gradient(to right, orange, red);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
-.sub{text-align:center;font-weight:700;font-size:16px;margin-bottom:20px;}
 
+.container{padding:20px;}
+
+.logo{
+  display:block;
+  margin:auto;
+  width:140px;
+}
+
+.brand{
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  background: linear-gradient(to right, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub{
+  text-align:center;
+  font-weight:700;
+  font-size:16px;
+  margin-bottom:20px;
+}
+
+/* CARD */
 .card{
   background:white;
   border-radius:20px;
@@ -25,6 +46,7 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
   position:relative;
 }
+
 .ribbon{
   position:absolute;
   top:15px;
@@ -35,14 +57,28 @@ body{
   transform:rotate(45deg);
   font-weight:700;
 }
+
 .icon-box{
-  width:80px;height:80px;background:#e3f2fd;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;margin:auto;
+  width:80px;height:80px;
+  background:#e3f2fd;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
 }
+
 .icon-box img{width:45px;}
+
 .title{text-align:center;font-size:22px;font-weight:700;}
 .price{text-align:center;font-size:32px;font-weight:700;}
-.subprice{text-align:center;font-weight:700;color:#1a73e8;margin-bottom:15px;}
+
+.subprice{
+  text-align:center;
+  font-weight:700;
+  color:#1a73e8;
+  margin-bottom:15px;
+}
 
 .list{
   display:grid;
@@ -51,8 +87,13 @@ body{
   font-size:14px;
   font-weight:600;
 }
-.list div::before{content:"✔ ";color:#1a73e8;}
 
+.list div::before{
+  content:"✔ ";
+  color:#1a73e8;
+}
+
+/* 🔵 BUTTON (UPDATED) */
 .btn{
   margin-top:20px;
   width:100%;
@@ -65,6 +106,7 @@ body{
   font-weight:700;
 }
 
+/* FORM */
 .form-box{
   display:none;
   background:white;
@@ -105,6 +147,7 @@ Choose your plan below to start your digital financial journey with us.
 
 <div class="title">Retailer</div>
 <div class="price">₹499</div>
+
 <div class="subprice">One-Time Onboarding Fee</div>
 
 <div class="list">
@@ -128,6 +171,7 @@ Choose your plan below to start your digital financial journey with us.
 
 <div class="title">Distributor</div>
 <div class="price">₹999</div>
+
 <div class="subprice">One-Time Onboarding Fee</div>
 
 <div class="list">
@@ -143,7 +187,7 @@ Choose your plan below to start your digital financial journey with us.
 <!-- FORM -->
 <div class="form-box" id="formBox">
 
-<h2 style="text-align:center;font-weight:700;">
+<h2 style="text-align:center; font-weight:700;">
 Complete Registration for 
 <span id="planName" style="color:#1a73e8;">Retailer</span>
 </h2>
@@ -171,6 +215,17 @@ Complete Registration for
 <button class="btn" onclick="submitForm()">Create My Account</button>
 </div>
 
+<!-- PAYMENT -->
+<div class="form-box" id="paymentBox">
+<h3 style="font-weight:700;">Complete Payment</h3>
+
+<p style="font-weight:700;">Amount: <b id="amount"></b></p>
+<p style="font-weight:700;">UPI: <b>Q99636372@ybl</b></p>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
+style="display:block;margin:auto;">
+</div>
+
 </div>
 
 <script>
@@ -179,42 +234,48 @@ let plan="";
 
 function openForm(p){
   plan=p;
+
   document.getElementById("formBox").style.display="block";
+
   document.getElementById("planName").innerText =
     p==="retailer" ? "Retailer" : "Distributor";
+
   window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
 
 function submitForm(){
 
-let data = {
-  name: document.getElementById("name").value,
-  father: document.getElementById("father").value,
-  shop: document.getElementById("shop").value,
-  email: document.getElementById("email").value,
-  mobile: document.getElementById("mobile").value,
-  pan: document.getElementById("pan").value,
-  aadhaar: document.getElementById("aadhaar").value,
-  gender: document.getElementById("gender").value,
-  address: document.getElementById("address").value,
-  state: document.getElementById("state").value,
-  city: document.getElementById("city").value,
-  pincode: document.getElementById("pincode").value,
-  plan: plan
-};
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
+let aadhaar=document.getElementById("aadhaar").value;
+let pincode=document.getElementById("pincode").value;
 
-if(data.name=="" || data.mobile=="" || data.aadhaar=="" || data.pincode==""){
+if(name=="" || mobile=="" || aadhaar=="" || pincode==""){
+  alert("⚠️ Fill all required fields");
   return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbyhOyUG5l9liOBGPoH9ZyDk9tFJ-FGAYQIBKHNB9Hjk_f0oJYTMhPnblNpYiEw4DLMQ/exec", {
-  method: "POST",
-  headers: {"Content-Type":"application/json"},
-  body: JSON.stringify(data)
-});
+if(mobile.length!==10){
+  alert("❌ Mobile must be 10 digits");
+  return;
+}
 
-// 👉 silent redirect
-window.location.href = "https://google.com"; // yaha apna page daal sakte ho
+if(aadhaar.length!==12){
+  alert("❌ Aadhaar must be 12 digits");
+  return;
+}
+
+if(pincode.length!==6){
+  alert("❌ Pincode must be 6 digits");
+  return;
+}
+
+document.getElementById("paymentBox").style.display="block";
+
+document.getElementById("amount").innerText =
+plan==="retailer" ? "₹499" : "₹999";
+
+alert("✅ Form Submitted Successfully");
 
 }
 
