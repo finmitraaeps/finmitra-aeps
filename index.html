@@ -1,55 +1,52 @@
 <!DOCTYPE html><html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinMitra AEPS</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
+<title>FinMitra AEPS</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"><style>
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#0f172a,#1e293b);
+  background:#f4f7fc;
   margin:0;
-  color:#fff;
 }
 
-.container{padding:20px;max-width:1100px;margin:auto;}
+.container{padding:20px;}
 
-.logo{display:block;margin:auto;width:120px;}
+.logo{
+  display:block;
+  margin:auto;
+  width:140px;
+}
 
 .brand{
   text-align:center;
-  font-size:30px;
+  font-size:28px;
   font-weight:700;
-  background: linear-gradient(to right, #ff512f, #dd2476);
+  background: linear-gradient(to right, orange, red);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.sub{text-align:center;color:#cbd5f5;margin-bottom:20px;}
-
-.section{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  padding:25px;
-  border-radius:20px;
-  margin-top:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+.sub{
+  text-align:center;
+  font-weight:700;
+  font-size:16px;
+  margin-bottom:20px;
 }
 
 .card{
-  background:rgba(255,255,255,0.08);
+  background:white;
   border-radius:20px;
-  padding:25px;
+  padding:20px;
   margin:15px 0;
-  text-align:center;
-  transition:0.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  position:relative;
 }
-
-.card:hover{transform:translateY(-8px);}
 
 .ribbon{
   position:absolute;
   top:15px;
   right:-40px;
-  background:#ff512f;
+  background:#1a73e8;
+  color:white;
   padding:6px 50px;
   transform:rotate(45deg);
   font-weight:700;
@@ -57,7 +54,7 @@ body{
 
 .icon-box{
   width:80px;height:80px;
-  background:linear-gradient(135deg,#ff512f,#dd2476);
+  background:#e3f2fd;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -65,34 +62,74 @@ body{
   margin:auto;
 }
 
-.icon-box img{width:40px;filter:invert(1);}
+.icon-box img{width:45px;}
 
-.title{font-size:22px;font-weight:700;margin-top:10px;}
-.price{font-size:32px;font-weight:700;color:#ff512f;}
-.subprice{color:#cbd5f5;margin-bottom:15px;}
+.title{text-align:center;font-size:22px;font-weight:700;}
+.price{text-align:center;font-size:32px;font-weight:700;}
 
-.list{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:14px;}
-.list div::before{content:"✔ ";color:#ff512f;}
+.subprice{
+  text-align:center;
+  font-weight:700;
+  color:#1a73e8;
+  margin-bottom:15px;
+}
+
+.list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.list div::before{
+  content:"✔ ";
+  color:#1a73e8;
+}
 
 .btn{
   margin-top:20px;
   width:100%;
   padding:14px;
   border:none;
-  border-radius:12px;
-  background:linear-gradient(to right,#ff512f,#dd2476);
+  border-radius:10px;
+  background:#1a73e8;
   color:white;
   font-size:16px;
   font-weight:700;
 }
 
-.form-box{display:none;margin-top:20px;background:#fff;color:#000;padding:20px;border-radius:15px;}
-input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #ddd;}
+.form-box{
+  display:none;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin-top:15px;
+}
+
+input,select{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+.section{
+  background:white;
+  margin-top:20px;
+  padding:20px;
+  border-radius:15px;
+}
+
+.section h2{
+  text-align:center;
+}
 
 .testimonial{
-  background:#020617;
+  background:#f1f5f9;
   padding:15px;
-  border-radius:12px;
+  border-radius:10px;
   margin:10px 0;
 }
 
@@ -102,59 +139,129 @@ input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #d
   right:20px;
   background:#25D366;
   color:#fff;
-  padding:14px 18px;
+  padding:12px 18px;
   border-radius:50px;
   text-decoration:none;
   font-weight:600;
 }
-</style></head><body><div class="container"><img src="finmitra.png" class="logo">
-<div class="brand">FinMitra AEPS</div>
-<div class="sub">Start your digital earning journey today</div><div class="section" style="text-align:center;">
+
+</style></head><body><div class="container"><img src="finmitra.png" class="logo"><div class="brand">FinMitra AEPS</div><div class="sub">
+Choose your plan below to start your digital financial journey with us.
+</div><div class="section" style="text-align:center; font-weight:700;">
 🚀 Trusted by <b>1000+ Retailers</b> across India
-</div><div class="card">
-<div class="title">Retailer</div>
-<div class="price">₹499</div>
-<div class="subprice">One-Time Fee</div>
-<div class="list">
-<div>AEPS</div><div>Aadhar Pay</div>
-<div>Recharge</div><div>Money Transfer</div>
-</div>
-<button class="btn" onclick="openForm('retailer')">Join Now</button>
-</div><div class="card">
-<div class="title">Distributor</div>
-<div class="price">₹999</div>
-<div class="subprice">One-Time Fee</div>
-<div class="list">
-<div>Unlimited Retailers</div><div>High Commission</div>
-</div>
-<button class="btn" onclick="openForm('distributor')">Join Now</button>
-</div><div class="form-box" id="formBox">
-<h3>Register Now</h3>
-<input id="name" placeholder="Full Name">
-<input id="mobile" placeholder="Mobile Number">
-<button class="btn" onclick="submitForm()">Submit</button>
-</div><div class="form-box" id="paymentBox">
-<h3>Complete Payment</h3>
-<p id="amount"></p>
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl">
-</div><div class="section">
+</div><!-- RETAILER --><div class="card">
+<div class="ribbon">Most Popular</div><div class="icon-box">
+<img src="https://cdn-icons-png.flaticon.com/512/2838/2838912.png">
+</div><div class="title">Retailer</div>
+<div class="price">₹499</div><div class="subprice">One-Time Onboarding Fee</div><div class="list">
+<div>AEPS</div>
+<div>Aadhar Pay</div>
+<div>Account Opening</div>
+<div>Recharge</div>
+<div>Money Transfer</div>
+<div>Micro ATM</div>
+</div><button class="btn" onclick="openForm('retailer')">Select Plan</button>
+
+</div><!-- DISTRIBUTOR --><div class="card"><div class="icon-box">
+<img src="https://cdn-icons-png.flaticon.com/512/921/921347.png">
+</div><div class="title">Distributor</div>
+<div class="price">₹999</div><div class="subprice">One-Time Onboarding Fee</div><div class="list">
+<div>Unlimited Retailers</div>
+<div>High Commission</div>
+<div>24x7 Support</div>
+<div>Lifetime</div>
+</div><button class="btn" onclick="openForm('distributor')">Select Plan</button>
+
+</div><!-- FORM --><div class="form-box" id="formBox"><h2 style="text-align:center; font-weight:700;">
+Complete Registration for 
+<span id="planName" style="color:#1a73e8;">Retailer</span>
+</h2><input id="name" placeholder="Full Name *">
+<input id="father" placeholder="Father Name *">
+<input id="shop" placeholder="Shop Name *">
+<input id="email" placeholder="Email *"><input id="mobile" type="tel" maxlength="10" placeholder="Mobile Number *">
+<input id="pan" placeholder="PAN *">
+<input id="aadhaar" type="tel" maxlength="12" placeholder="Aadhaar Number *"><select id="gender">
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select><input id="address" placeholder="Address *">
+<input id="state" placeholder="State *">
+<input id="city" placeholder="City *">
+<input id="pincode" type="tel" maxlength="6" placeholder="Pincode *"><button class="btn" onclick="submitForm()">Create My Account</button>
+
+</div><!-- PAYMENT --><div class="form-box" id="paymentBox">
+<h3 style="font-weight:700;">Complete Payment</h3><p style="font-weight:700;">Amount: <b id="amount"></b></p>
+<p style="font-weight:700;">UPI: <b>Q99636372@ybl</b></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
+style="display:block;margin:auto;">
+
+</div><!-- ABOUT --><div class="section">
 <h2>About FinMitra AEPS</h2>
-<p>FinMitra AEPS is a trusted platform helping retailers earn through digital banking services.</p>
-</div><div class="section">
-<h2>Testimonials</h2>
-<div class="testimonial">Rohit (Patna): Great earning platform</div>
-<div class="testimonial">Ajay (Delhi): Very reliable service</div>
-</div><div class="section">
-<h2>Office</h2>
-<p>Noida Sector 62, India</p>
-</div></div><a href="#" class="whatsapp">Chat</a>
+<p>
+FinMitra AEPS is a trusted digital financial service platform that empowers retailers across India 
+to provide essential banking services like Cash Withdrawal, Balance Inquiry, Mini Statement, 
+Money Transfer, and more.
+</p>
+</div><!-- TESTIMONIALS --><div class="section">
+<h2>Customer Testimonials</h2><div class="testimonial">
+<img src="https://randomuser.me/api/portraits/men/35.jpg" style="width:60px;border-radius:50%;">
+<p><b>Rohit Kumar (Retailer, Patna)</b></p>
+<p>"FinMitra AEPS gives me consistent daily income. Easy and fast service."</p>
+</div><div class="testimonial">
+<img src="https://randomuser.me/api/portraits/men/41.jpg" style="width:60px;border-radius:50%;">
+<p><b>Ajay Singh (Retailer, Delhi)</b></p>
+<p>"Customers trust this service. Transactions are smooth and reliable."</p>
+</div></div><!-- ADDRESS --><div class="section">
+<h2>Office Address</h2>
+<p>
+FinMitra AEPS Pvt Ltd<br>
+Noida Sector 62<br>
+Uttar Pradesh - 201309<br>
+India
+</p>
+</div></div><a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">Chat</a>
 
 <script>
 let plan="";
-function openForm(p){plan=p;document.getElementById("formBox").style.display="block";}
+
+function openForm(p){
+  plan=p;
+  document.getElementById("formBox").style.display="block";
+  document.getElementById("planName").innerText =
+    p==="retailer" ? "Retailer" : "Distributor";
+}
+
 function submitForm(){
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
+let aadhaar=document.getElementById("aadhaar").value;
+let pincode=document.getElementById("pincode").value;
+
+if(name=="" || mobile=="" || aadhaar=="" || pincode==""){
+  alert("⚠️ Fill all required fields");
+  return;
+}
+
+if(mobile.length!==10){
+  alert("❌ Mobile must be 10 digits");
+  return;
+}
+
+if(aadhaar.length!==12){
+  alert("❌ Aadhaar must be 12 digits");
+  return;
+}
+
+if(pincode.length!==6){
+  alert("❌ Pincode must be 6 digits");
+  return;
+}
+
 document.getElementById("paymentBox").style.display="block";
-document.getElementById("amount").innerText=plan==='retailer'?'₹499':'₹999';
+
+document.getElementById("amount").innerText =
+plan==="retailer" ? "₹499" : "₹999";
+
+alert("✅ Form Submitted Successfully");
 }
 </script></body>
 </html>
