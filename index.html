@@ -10,31 +10,37 @@
 body{font-family:'Poppins',sans-serif;background:#f4f7fc;margin:0;}
 .container{padding:20px;}
 .logo{display:block;margin:auto;width:140px;}
-.brand{text-align:center;font-size:28px;font-weight:700;background: linear-gradient(to right, orange, red);-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+
+.brand{
+  text-align:center;font-size:28px;font-weight:700;
+  background: linear-gradient(to right, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .sub{text-align:center;font-weight:700;font-size:16px;margin-bottom:20px;}
 
 .card{
   background:white;border-radius:20px;padding:20px;margin:15px 0;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);position:relative;
 }
+
 .ribbon{
-  position:absolute;top:15px;right:-40px;background:#1a73e8;color:white;
-  padding:6px 50px;transform:rotate(45deg);font-weight:700;
+  position:absolute;top:15px;right:-40px;background:#1a73e8;
+  color:white;padding:6px 50px;transform:rotate(45deg);font-weight:700;
 }
+
 .icon-box{
   width:80px;height:80px;background:#e3f2fd;border-radius:50%;
   display:flex;align-items:center;justify-content:center;margin:auto;
 }
+
 .icon-box img{width:45px;}
+
 .title{text-align:center;font-size:22px;font-weight:700;}
 .price{text-align:center;font-size:32px;font-weight:700;}
-.subprice{text-align:center;font-weight:700;color:#1a73e8;margin-bottom:15px;}
 
-.list{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
-  font-size:14px;font-weight:600;
-}
-.list div::before{content:"✔ ";color:#1a73e8;}
+.subprice{text-align:center;font-weight:700;color:#1a73e8;margin-bottom:15px;}
 
 .btn{
   margin-top:20px;width:100%;padding:14px;border:none;border-radius:10px;
@@ -59,7 +65,7 @@ input,select{
 
 <div class="brand">FinMitra AEPS</div>
 
-<div class="sub">Choose your plan below to start your digital financial journey with us.</div>
+<div class="sub">Choose your plan below to start your digital journey</div>
 
 <!-- RETAILER -->
 <div class="card">
@@ -71,23 +77,8 @@ input,select{
 
 <div class="title">Retailer</div>
 <div class="price">₹499</div>
-<div class="subprice">One-Time Onboarding Fee</div>
 
 <button class="btn" onclick="openForm('retailer')">Select Plan</button>
-</div>
-
-<!-- DISTRIBUTOR -->
-<div class="card">
-
-<div class="icon-box">
-<img src="https://cdn-icons-png.flaticon.com/512/921/921347.png">
-</div>
-
-<div class="title">Distributor</div>
-<div class="price">₹999</div>
-<div class="subprice">One-Time Onboarding Fee</div>
-
-<button class="btn" onclick="openForm('distributor')">Select Plan</button>
 </div>
 
 <!-- FORM -->
@@ -99,23 +90,13 @@ Complete Registration for
 </h2>
 
 <input id="name" placeholder="Full Name *">
-<input id="father" placeholder="Father Name *">
-<input id="shop" placeholder="Shop Name *">
-<input id="email" placeholder="Email *">
-
 <input id="mobile" type="tel" maxlength="10" placeholder="Mobile Number *">
-<input id="pan" placeholder="PAN *">
+
+<!-- PAN UPDATED -->
+<input id="pan" maxlength="10" placeholder="PAN (ABCDE1234F)" style="text-transform:uppercase;">
+
 <input id="aadhaar" type="tel" maxlength="12" placeholder="Aadhaar Number *">
 
-<select id="gender">
-<option value="">Select Gender</option>
-<option>Male</option>
-<option>Female</option>
-</select>
-
-<input id="address" placeholder="Address *">
-<input id="state" placeholder="State *">
-<input id="city" placeholder="City *">
 <input id="pincode" type="tel" maxlength="6" placeholder="Pincode *">
 
 <button class="btn" onclick="submitForm()">Create My Account</button>
@@ -130,8 +111,7 @@ let plan="";
 function openForm(p){
   plan=p;
   document.getElementById("formBox").style.display="block";
-  document.getElementById("planName").innerText =
-    p==="retailer" ? "Retailer" : "Distributor";
+  document.getElementById("planName").innerText="Retailer";
   window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
 
@@ -147,16 +127,13 @@ let pan=document.getElementById("pan").value.toUpperCase();
 let panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
 
 // silent validation
-if(name=="" || mobile=="" || aadhaar=="" || pincode==""){
-  return;
-}
-
+if(name=="" || mobile=="" || aadhaar=="" || pincode==""){ return; }
 if(mobile.length!==10){ return; }
 if(aadhaar.length!==12){ return; }
 if(pincode.length!==6){ return; }
 if(!panPattern.test(pan)){ return; }
 
-// submit ke baad form hide
+// hide form after submit
 document.getElementById("formBox").style.display="none";
 
 }
