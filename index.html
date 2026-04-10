@@ -1,27 +1,28 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinMitra AEPS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{
   font-family:'Poppins',sans-serif;
   background:#f4f7fc;
+  margin:0;
 }
 
-.container{padding:20px;}
+.container{
+  padding:20px;
+}
 
-/* LOGO */
 .logo{
   display:block;
   margin:auto;
-  width:150px;
+  width:140px;
 }
 
-/* BRAND NAME */
 .brand{
   text-align:center;
   font-size:28px;
@@ -31,11 +32,10 @@ body{
   -webkit-text-fill-color: transparent;
 }
 
-/* SUB TEXT */
 .sub{
   text-align:center;
-  color:#666;
-  font-size:14px;
+  font-weight:600;
+  font-size:16px;
   margin-bottom:20px;
 }
 
@@ -73,11 +73,29 @@ body{
   margin:auto;
 }
 
-.icon-box img{width:45px;}
+.icon-box img{
+  width:45px;
+}
 
-.title{text-align:center;font-size:22px;font-weight:600;}
-.price{text-align:center;font-size:32px;font-weight:700;}
-.subprice{text-align:center;color:#777;font-size:13px;margin-bottom:15px;}
+/* TEXT */
+.title{
+  text-align:center;
+  font-size:22px;
+  font-weight:600;
+}
+
+.price{
+  text-align:center;
+  font-size:32px;
+  font-weight:700;
+}
+
+.subprice{
+  text-align:center;
+  font-weight:700;
+  color:#ff5722;
+  margin-bottom:15px;
+}
 
 /* LIST */
 .list{
@@ -130,10 +148,13 @@ input,select{
 <!-- LOGO -->
 <img src="finmitra.png" class="logo">
 
-<!-- NAME -->
+<!-- BRAND -->
 <div class="brand">FinMitra AEPS</div>
 
-<div class="sub">Choose your plan below to start your digital financial journey with us.</div>
+<!-- BOLD TEXT -->
+<div class="sub">
+Choose your plan below to start your digital financial journey with us.
+</div>
 
 <!-- RETAILER -->
 <div class="card">
@@ -145,17 +166,16 @@ input,select{
 
   <div class="title">Retailer</div>
   <div class="price">₹499</div>
+
   <div class="subprice">One-Time Onboarding Fee</div>
 
   <div class="list">
     <div>AEPS</div>
     <div>Aadhar Pay</div>
     <div>Account Opening</div>
-    <div>Recharges</div>
+    <div>Recharge</div>
     <div>Money Transfer</div>
     <div>Micro ATM</div>
-    <div>PAN Service</div>
-    <div>And many more...</div>
   </div>
 
   <button class="btn" onclick="openForm('retailer')">Select Plan</button>
@@ -170,14 +190,14 @@ input,select{
 
   <div class="title">Distributor</div>
   <div class="price">₹999</div>
+
   <div class="subprice">One-Time Onboarding Fee</div>
 
   <div class="list">
     <div>Unlimited Retailers</div>
-    <div>Highest Commission</div>
+    <div>High Commission</div>
     <div>24x7 Support</div>
-    <div>Lifetime Validity</div>
-    <div>Dedicated Portal</div>
+    <div>Lifetime</div>
   </div>
 
   <button class="btn" onclick="openForm('distributor')">Select Plan</button>
@@ -188,34 +208,34 @@ input,select{
 <h3 id="planTitle"></h3>
 
 <input id="name" placeholder="Full Name *">
-<input id="father" placeholder="Father / Husband Name *">
+<input id="father" placeholder="Father Name *">
 <input id="shop" placeholder="Shop Name *">
 <input id="email" placeholder="Email *">
 <input id="mobile" placeholder="Mobile *">
-<input id="pan" placeholder="PAN Number *">
-<input id="aadhaar" placeholder="Aadhaar Number *">
+<input id="pan" placeholder="PAN *">
+<input id="aadhaar" placeholder="Aadhaar *">
 
 <select id="gender">
-<option value="">Select Gender *</option>
+<option value="">Select Gender</option>
 <option>Male</option>
 <option>Female</option>
 </select>
 
-<input id="address" placeholder="Full Address *">
+<input id="address" placeholder="Address *">
 <input id="state" placeholder="State *">
 <input id="city" placeholder="City *">
 <input id="pincode" placeholder="Pincode *">
 
-<button class="btn" onclick="validateForm()">Create My Account</button>
+<button class="btn" onclick="submitForm()">Create My Account</button>
 </div>
 
 <!-- PAYMENT -->
 <div class="form-box" id="paymentBox">
 <h3>Complete Payment</h3>
 
-<p style="text-align:center;">Amount: <b id="amount"></b></p>
+<p style="font-weight:600;">Amount: <b id="amount"></b></p>
 
-<p style="text-align:center;">UPI: <b>Q99636372@ybl</b></p>
+<p style="font-weight:600;">UPI: <b>Q99636372@ybl</b></p>
 
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
 style="display:block;margin:auto;">
@@ -224,44 +244,38 @@ style="display:block;margin:auto;">
 </div>
 
 <script>
+
 let plan="";
 
 function openForm(p){
   plan=p;
   document.getElementById("formBox").style.display="block";
 
-  if(p==="retailer"){
-    document.getElementById("planTitle").innerText="Retailer Registration ₹499";
-  } else {
-    document.getElementById("planTitle").innerText="Distributor Registration ₹999";
-  }
+  document.getElementById("planTitle").innerText =
+  p==="retailer" ? "Retailer ₹499" : "Distributor ₹999";
 
   window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
 
-function validateForm(){
-let fields=["name","father","shop","email","mobile","pan","aadhaar","address","state","city","pincode"];
+function submitForm(){
 
-for(let i=0;i<fields.length;i++){
-  if(document.getElementById(fields[i]).value===""){
-    alert("⚠️ Please fill all details");
-    return;
-  }
-}
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
 
-if(document.getElementById("gender").value===""){
-  alert("⚠️ Select Gender");
+if(name==""||mobile==""){
+  alert("⚠️ Fill required fields");
   return;
 }
 
 document.getElementById("paymentBox").style.display="block";
 
-if(plan==="retailer"){
-  document.getElementById("amount").innerText="₹499";
-}else{
-  document.getElementById("amount").innerText="₹999";
+document.getElementById("amount").innerText =
+plan==="retailer" ? "₹499" : "₹999";
+
+alert("✅ Form Submitted");
+
 }
-}
+
 </script>
 
 </body>
