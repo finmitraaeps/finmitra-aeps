@@ -32,11 +32,12 @@ body{
 
 .sub{
   text-align:center;
-  font-weight:600;
+  font-weight:700;
   font-size:16px;
   margin-bottom:20px;
 }
 
+/* CARD */
 .card{
   background:white;
   border-radius:20px;
@@ -54,6 +55,7 @@ body{
   color:white;
   padding:6px 50px;
   transform:rotate(45deg);
+  font-weight:700;
 }
 
 .icon-box{
@@ -68,7 +70,7 @@ body{
 
 .icon-box img{width:45px;}
 
-.title{text-align:center;font-size:22px;font-weight:600;}
+.title{text-align:center;font-size:22px;font-weight:700;}
 .price{text-align:center;font-size:32px;font-weight:700;}
 
 .subprice{
@@ -83,6 +85,7 @@ body{
   grid-template-columns:1fr 1fr;
   gap:10px;
   font-size:14px;
+  font-weight:600;
 }
 
 .list div::before{
@@ -99,8 +102,10 @@ body{
   background:linear-gradient(to right, orange, red);
   color:white;
   font-size:16px;
+  font-weight:700;
 }
 
+/* FORM */
 .form-box{
   display:none;
   background:white;
@@ -180,7 +185,11 @@ Choose your plan below to start your digital financial journey with us.
 
 <!-- FORM -->
 <div class="form-box" id="formBox">
-<h3 id="planTitle"></h3>
+
+<h2 style="text-align:center; font-weight:700;">
+Complete Registration for 
+<span id="planName" style="color:#1a73e8;">Retailer</span>
+</h2>
 
 <input id="name" placeholder="Full Name *">
 <input id="father" placeholder="Father Name *">
@@ -207,10 +216,10 @@ Choose your plan below to start your digital financial journey with us.
 
 <!-- PAYMENT -->
 <div class="form-box" id="paymentBox">
-<h3>Complete Payment</h3>
+<h3 style="font-weight:700;">Complete Payment</h3>
 
-<p style="font-weight:600;">Amount: <b id="amount"></b></p>
-<p style="font-weight:600;">UPI: <b>Q99636372@ybl</b></p>
+<p style="font-weight:700;">Amount: <b id="amount"></b></p>
+<p style="font-weight:700;">UPI: <b>Q99636372@ybl</b></p>
 
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
 style="display:block;margin:auto;">
@@ -224,10 +233,11 @@ let plan="";
 
 function openForm(p){
   plan=p;
+
   document.getElementById("formBox").style.display="block";
 
-  document.getElementById("planTitle").innerText =
-  p==="retailer" ? "Retailer ₹499" : "Distributor ₹999";
+  document.getElementById("planName").innerText =
+    p==="retailer" ? "Retailer" : "Distributor";
 
   window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
