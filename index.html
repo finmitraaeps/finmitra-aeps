@@ -1,284 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FinMitra AEPS</title>
+  <title>FinMitra Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 20px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
 
-<style>
-body{
-  font-family:'Poppins',sans-serif;
-  background:#f4f7fc;
-  margin:0;
-}
+    h2 {
+      text-align: center;
+    }
 
-.container{padding:20px;}
+    label {
+      font-weight: bold;
+    }
 
-.logo{
-  display:block;
-  margin:auto;
-  width:140px;
-}
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
 
-.brand{
-  text-align:center;
-  font-size:28px;
-  font-weight:700;
-  background: linear-gradient(to right, orange, red);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    button {
+      width: 100%;
+      padding: 12px;
+      background: blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-.sub{
-  text-align:center;
-  font-weight:700;
-  font-size:16px;
-  margin-bottom:20px;
-}
-
-/* CARD */
-.card{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin:15px 0;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  position:relative;
-}
-
-.ribbon{
-  position:absolute;
-  top:15px;
-  right:-40px;
-  background:#1a73e8;
-  color:white;
-  padding:6px 50px;
-  transform:rotate(45deg);
-  font-weight:700;
-}
-
-.icon-box{
-  width:80px;height:80px;
-  background:#e3f2fd;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:auto;
-}
-
-.icon-box img{width:45px;}
-
-.title{text-align:center;font-size:22px;font-weight:700;}
-.price{text-align:center;font-size:32px;font-weight:700;}
-
-.subprice{
-  text-align:center;
-  font-weight:700;
-  color:#1a73e8;
-  margin-bottom:15px;
-}
-
-.list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  font-size:14px;
-  font-weight:600;
-}
-
-.list div::before{
-  content:"✔ ";
-  color:#1a73e8;
-}
-
-/* 🔵 BUTTON (UPDATED) */
-.btn{
-  margin-top:20px;
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:10px;
-  background:#1a73e8;
-  color:white;
-  font-size:16px;
-  font-weight:700;
-}
-
-/* FORM */
-.form-box{
-  display:none;
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  margin-top:15px;
-}
-
-input,select{
-  width:100%;
-  padding:10px;
-  margin:6px 0;
-  border-radius:8px;
-  border:1px solid #ddd;
-}
-</style>
+    button:hover {
+      background: darkblue;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="container">
+  <h2><b>Select Plan</b></h2>
 
-<img src="finmitra.png" class="logo">
+  <form id="myForm">
 
-<div class="brand">FinMitra AEPS</div>
+    <label>Name</label>
+    <input type="text" id="name" required>
 
-<div class="sub">
-Choose your plan below to start your digital financial journey with us.
-</div>
+    <label>Mobile No</label>
+    <input type="number" id="mobile" maxlength="10" required>
 
-<!-- RETAILER -->
-<div class="card">
-<div class="ribbon">Most Popular</div>
+    <label>Aadhaar No</label>
+    <input type="number" id="aadhaar" maxlength="12" required>
 
-<div class="icon-box">
-<img src="https://cdn-icons-png.flaticon.com/512/2838/2838912.png">
-</div>
+    <label>PAN</label>
+    <input type="text" id="pan" required>
 
-<div class="title">Retailer</div>
-<div class="price">₹499</div>
+    <label>Plan</label>
+    <select id="plan" required>
+      <option value="">Select</option>
+      <option>Basic</option>
+      <option>Premium</option>
+      <option>Gold</option>
+    </select>
 
-<div class="subprice">One-Time Onboarding Fee</div>
+    <button type="submit">Create My Account</button>
 
-<div class="list">
-<div>AEPS</div>
-<div>Aadhar Pay</div>
-<div>Account Opening</div>
-<div>Recharge</div>
-<div>Money Transfer</div>
-<div>Micro ATM</div>
-</div>
-
-<button class="btn" onclick="openForm('retailer')">Select Plan</button>
-</div>
-
-<!-- DISTRIBUTOR -->
-<div class="card">
-
-<div class="icon-box">
-<img src="https://cdn-icons-png.flaticon.com/512/921/921347.png">
-</div>
-
-<div class="title">Distributor</div>
-<div class="price">₹999</div>
-
-<div class="subprice">One-Time Onboarding Fee</div>
-
-<div class="list">
-<div>Unlimited Retailers</div>
-<div>High Commission</div>
-<div>24x7 Support</div>
-<div>Lifetime</div>
-</div>
-
-<button class="btn" onclick="openForm('distributor')">Select Plan</button>
-</div>
-
-<!-- FORM -->
-<div class="form-box" id="formBox">
-
-<h2 style="text-align:center; font-weight:700;">
-Complete Registration for 
-<span id="planName" style="color:#1a73e8;">Retailer</span>
-</h2>
-
-<input id="name" placeholder="Full Name *">
-<input id="father" placeholder="Father Name *">
-<input id="shop" placeholder="Shop Name *">
-<input id="email" placeholder="Email *">
-
-<input id="mobile" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile Number *">
-<input id="pan" placeholder="PAN *">
-<input id="aadhaar" type="tel" inputmode="numeric" maxlength="12" placeholder="Aadhaar Number *">
-
-<select id="gender">
-<option value="">Select Gender</option>
-<option>Male</option>
-<option>Female</option>
-</select>
-
-<input id="address" placeholder="Address *">
-<input id="state" placeholder="State *">
-<input id="city" placeholder="City *">
-<input id="pincode" type="tel" inputmode="numeric" maxlength="6" placeholder="Pincode *">
-
-<button class="btn" onclick="submitForm()">Create My Account</button>
-</div>
-
-<!-- PAYMENT -->
-<div class="form-box" id="paymentBox">
-<h3 style="font-weight:700;">Complete Payment</h3>
-
-<p style="font-weight:700;">Amount: <b id="amount"></b></p>
-<p style="font-weight:700;">UPI: <b>Q99636372@ybl</b></p>
-
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=Q99636372@ybl"
-style="display:block;margin:auto;">
-</div>
-
+  </form>
 </div>
 
 <script>
+document.getElementById("myForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-let plan="";
+  let mobile = document.getElementById("mobile").value;
+  let aadhaar = document.getElementById("aadhaar").value;
 
-function openForm(p){
-  plan=p;
+  if (mobile.length != 10) {
+    alert("Mobile number must be 10 digits");
+    return;
+  }
 
-  document.getElementById("formBox").style.display="block";
+  if (aadhaar.length != 12) {
+    alert("Aadhaar must be 12 digits");
+    return;
+  }
 
-  document.getElementById("planName").innerText =
-    p==="retailer" ? "Retailer" : "Distributor";
+  let data = {
+    name: document.getElementById("name").value,
+    mobile: mobile,
+    aadhaar: aadhaar,
+    pan: document.getElementById("pan").value,
+    plan: document.getElementById("plan").value
+  };
 
-  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
-}
+  fetch("https://script.google.com/macros/s/AKfycbyhOyUG5l9liOBGPoH9ZyDk9tFJ-FGAYQIBKHNB9Hjk_f0oJYTMhPnblNpYiEw4DLMQ/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())
+  .then(() => {
+    alert("Form Submitted Successfully ✅");
+    document.getElementById("myForm").reset();
+  })
+  .catch(err => {
+    alert("Error ❌");
+    console.log(err);
+  });
 
-function submitForm(){
-
-let name=document.getElementById("name").value;
-let mobile=document.getElementById("mobile").value;
-let aadhaar=document.getElementById("aadhaar").value;
-let pincode=document.getElementById("pincode").value;
-
-if(name=="" || mobile=="" || aadhaar=="" || pincode==""){
-  alert("⚠️ Fill all required fields");
-  return;
-}
-
-if(mobile.length!==10){
-  alert("❌ Mobile must be 10 digits");
-  return;
-}
-
-if(aadhaar.length!==12){
-  alert("❌ Aadhaar must be 12 digits");
-  return;
-}
-
-if(pincode.length!==6){
-  alert("❌ Pincode must be 6 digits");
-  return;
-}
-
-document.getElementById("paymentBox").style.display="block";
-
-document.getElementById("amount").innerText =
-plan==="retailer" ? "₹499" : "₹999";
-
-alert("✅ Form Submitted Successfully");
-
-}
-
+});
 </script>
 
 </body>
